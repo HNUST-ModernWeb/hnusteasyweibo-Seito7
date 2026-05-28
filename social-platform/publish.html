@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发布动态 - ShareHub</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">📢 ShareHub</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">发现</a></li>
+        <li><a href="publish.html" class="nav-link nav-publish-btn active">✏️ 发布</a></li>
+        <li><a href="profile.html" class="nav-link">👤 我的</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="切换菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container publish-page">
+    <div class="publish-card">
+      <h2 class="publish-title">✏️ 发布新动态</h2>
+      <p class="publish-subtitle">分享你的想法、照片和精彩瞬间</p>
+
+      <form class="publish-form" id="publishForm" novalidate>
+        <!-- 文字内容 -->
+        <div class="form-group">
+          <label for="postContent" class="form-label">说点什么吧 <span class="required">*</span></label>
+          <div class="textarea-wrapper">
+            <textarea
+              id="postContent"
+              class="form-textarea"
+              rows="5"
+              maxlength="2000"
+              placeholder="分享你的新鲜事..."
+              required
+            ></textarea>
+            <span class="char-counter" id="charCounter">0 / 2000</span>
+          </div>
+          <p class="form-error" id="contentError"></p>
+        </div>
+
+        <!-- 图片上传 -->
+        <div class="form-group">
+          <label class="form-label">添加图片</label>
+          <div class="image-upload-area" id="imageUploadArea">
+            <div class="upload-zone" id="uploadZone">
+              <span class="upload-icon">🖼️</span>
+              <p>点击或拖拽图片到此处</p>
+              <p class="upload-hint">支持 JPG、PNG、GIF，单张不超过 10MB</p>
+              <input
+                type="file"
+                id="imageInput"
+                class="image-input-hidden"
+                accept="image/jpeg,image/png,image/gif"
+                multiple
+              >
+            </div>
+            <div class="image-preview-grid" id="imagePreviewGrid"></div>
+          </div>
+          <p class="form-error" id="imageError"></p>
+        </div>
+
+        <!-- 权限设置 -->
+        <div class="form-group">
+          <label class="form-label">可见范围</label>
+          <div class="visibility-options">
+            <label class="visibility-option">
+              <input type="radio" name="visibility" value="public" checked>
+              <span class="visibility-card">
+                <span class="visibility-icon">🌍</span>
+                <span class="visibility-label">公开</span>
+                <span class="visibility-desc">所有人可见</span>
+              </span>
+            </label>
+            <label class="visibility-option">
+              <input type="radio" name="visibility" value="friends">
+              <span class="visibility-card">
+                <span class="visibility-icon">👥</span>
+                <span class="visibility-label">好友可见</span>
+                <span class="visibility-desc">仅好友可查看</span>
+              </span>
+            </label>
+            <label class="visibility-option">
+              <input type="radio" name="visibility" value="private">
+              <span class="visibility-card">
+                <span class="visibility-icon">🔒</span>
+                <span class="visibility-label">私密</span>
+                <span class="visibility-desc">仅自己可见</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 提交按钮 -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="draftBtn">💾 存草稿</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">🚀 发布动态</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 草稿列表 -->
+    <div class="drafts-section" id="draftsSection" style="display:none;">
+      <h3>📝 草稿箱</h3>
+      <div class="drafts-list" id="draftsList"></div>
+    </div>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
